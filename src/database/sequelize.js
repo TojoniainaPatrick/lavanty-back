@@ -34,6 +34,9 @@ Bid.belongsTo( User, { foreignKey: 'userId' })
 Auction.hasMany( Bid, { foreignKey: 'auctionId' })
 Bid.belongsTo( Auction, { foreignKey: 'auctionId' })
 
+Bid.hasMany( Auction, { foreignKey: 'bidId' })
+Auction.belongsTo( Bid, { foreignKey: 'bidId' })
+
 Product.hasMany( Auction, { foreignKey: 'productId' })
 Auction.belongsTo( Product, { foreignKey: 'productId' })
 
@@ -45,8 +48,8 @@ Type.belongsTo( Category, { foreignKey: 'categoryId' })
 
 
 const runApp = async app => {
-  await sequelize.sync()
-  // await sequelize.sync({ force: true })
+  // await sequelize.sync()
+  await sequelize.sync({ force: true })
   .then( async _ => {
     await User.findOrCreate({ 
       where: {
