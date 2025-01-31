@@ -1,4 +1,4 @@
-const { Product, Type, Auction, Bid } = require("../../database/sequelize")
+const { Product, Type, Auction, Bid, User } = require("../../database/sequelize")
 
 module.exports = app => {
     app.get('/bid/list', async ( req, res ) => {
